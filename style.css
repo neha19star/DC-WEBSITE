@@ -1,0 +1,99 @@
+body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f9ff;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #0077ff, #00c6ff);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      animation: fadeIn 2s ease;
+    }
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+    section h2 {
+      color: #0077ff;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      height: 3px;
+      width: 50px;
+      background: #00c6ff;
+      border-radius: 5px;
+      animation: expand 1s ease;
+    }
+    .diagram {
+      margin: 20px 0;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      animation: fadeInUp 1s ease;
+    }
+    .diagram svg {
+      width: 100%;
+      max-width: 600px;
+    }
+    footer {
+      background: #0077ff;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    @keyframes fadeIn {
+      from {opacity:0;}
+      to {opacity:1;}
+    }
+    @keyframes fadeInUp {
+      from {opacity:0; transform: translateY(30px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+    @keyframes expand {
+      from {width: 0;}
+      to {width: 50px;}
+    }
+/* Sequence animation: total 6s cycle (0–2s left, 2–4s analog, 4–6s right) */
+@keyframes leftFlow {
+  0%   { stroke-dashoffset: 400; opacity: 1; }
+  33%  { stroke-dashoffset: 0;   opacity: 1; }
+  34%  { opacity: 0; }
+  100% { stroke-dashoffset: 400; opacity: 0; }
+}
+@keyframes analogFlow {
+  0%   { stroke-dashoffset: 400; opacity: 0; }
+  33%  { stroke-dashoffset: 400; opacity: 0; }
+  66%  { stroke-dashoffset: 0;   opacity: 1; }
+  67%  { opacity: 0; }
+  100% { stroke-dashoffset: 400; opacity: 0; }
+}
+@keyframes rightFlow {
+  0%   { stroke-dashoffset: 400; opacity: 0; }
+  66%  { stroke-dashoffset: 400; opacity: 0; }
+  100% { stroke-dashoffset: 0;   opacity: 1; }
+}
+
+/* classes applied to the three SVG paths */
+.left-seq  { stroke-dasharray: 400; stroke-dashoffset: 400; animation: leftFlow 6s linear infinite; }
+.analog-seq{ stroke-dasharray: 220; stroke-dashoffset: 400; animation: analogFlow 6s linear infinite; stroke-linecap: round; }
+.right-seq { stroke-dasharray: 400; stroke-dashoffset: 400; animation: rightFlow 6s linear infinite; }
